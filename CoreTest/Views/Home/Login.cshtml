@@ -1,0 +1,27 @@
+﻿
+
+
+
+<style>
+    body {
+        text-align: center;
+        background-color: lightblue;
+        /*        opacity:0.1;*/
+    }
+</style>
+<h1>登陆</h1>
+
+<form method="post" action="">
+    @Html.AntiForgeryToken()
+    <div>
+        <label> 用户名：</label><input type="text" name="account">
+        <br />
+        <label>密码：</label><input type="text" name="password">
+
+    </div>
+    <br />
+    <div>
+        <div style="color:red;">@ViewBag.mess</div>
+        <input type="submit" value="登陆" />
+    </div>
+</form>

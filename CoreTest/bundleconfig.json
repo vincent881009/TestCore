@@ -1,0 +1,18 @@
+[
+  {
+    "outputFileName": "wwwroot/css/all.min.css",
+    "inputFiles": [
+      "wwwroot/lib/layui/css/layui.css"
+    ]
+  }
+  //,
+  //{
+  //  "outputFileName": "wwwroot/css/layui.css",
+  //  "inputFiles": [
+  //    "wwwroot/lib/layui/css/layui.css"
+  //  ],
+  //  "minify": {
+  //    "enabled": true
+  //  }
+  //}
+]
