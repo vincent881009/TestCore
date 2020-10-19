@@ -12,7 +12,7 @@ namespace CoreTest.Utility
 {
     public static class RedisHelper
     {
-        private static string Constr = "";
+        private static string Constr = "127.0.0.1,password=123456,DefaultDatabase=0";
 
         private static object _locker = new Object();
         private static ConnectionMultiplexer _instance = null;

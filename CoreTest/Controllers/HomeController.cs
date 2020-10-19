@@ -21,6 +21,7 @@ using StackExchange.Redis;
 using CoreTest.Entity.Model.Query;
 using CoreTest.Entity.Model.Layui;
 using CoreTest.Entity;
+using CoreTest.Utility;
 
 namespace CoreTest.Controllers
 {
@@ -64,6 +65,19 @@ namespace CoreTest.Controllers
             }
         }
 
+
+
+
+        public IActionResult IndexRedis()
+        {
+            RedisHelper.Remove("fullname");
+            RedisHelper.Set("fullname", "yuyang", 1);
+            var res = RedisHelper.Get("fullname");
+            //_db.StringSet("fullname", "yuyang");
+            //var name = _db.StringGet("fullname");
+            ViewBag.name = res;
+            return View();
+        }
 
 
         public IActionResult Index()
@@ -143,13 +157,7 @@ namespace CoreTest.Controllers
             return RedirectToAction("Login");
         }
 
-        public IActionResult IndexRedis()
-        {
-            _db.StringSet("fullname", "yuyang");
-            var name = _db.StringGet("fullname");
-            ViewBag.name = name;
-            return View();
-        }
+    
         
 
 
