@@ -67,7 +67,7 @@ namespace CoreTest
 
 
             //services.AddSingleton(ConnectionMultiplexer.Connect("localhost"));
-            services.AddSingleton(ConnectionMultiplexer.Connect("localhost"));
+            services.AddSingleton(ConnectionMultiplexer.Connect("localhost,allowAdmin=true"));
             services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")));
             services.AddScoped<UserSevice>();
             services.AddScoped<SysUserSevice>();

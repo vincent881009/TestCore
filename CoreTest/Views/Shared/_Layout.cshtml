@@ -32,6 +32,12 @@
             background-color: lightseagreen;
             border-radius: 3px 3px;
         }
+        .layui-footer {
+            bottom: 15px;
+            position: absolute;
+            left:50%;
+            transform: translate(-50%);
+        }
     </style>
 </head>
 <body>
@@ -41,6 +47,11 @@
     <a href="/home/LogOut" class="logout">登出</a>
     <div>
         @RenderBody()
+    </div>
+
+    <div id="footer" class="layui-footer">
+        @*@await Component.InvokeAsync("Counter")*@
+      COPYRIGHT YYU版权所有
     </div>
 </body>
 </html>

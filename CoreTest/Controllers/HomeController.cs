@@ -67,14 +67,13 @@ namespace CoreTest.Controllers
 
 
 
-
+        //传统方式
+        //_db.StringSet("fullname", "yuyang2");
+        //var name = _db.StringGet("fullname");
         public IActionResult IndexRedis()
         {
-            RedisHelper.Remove("fullname");
             RedisHelper.Set("fullname", "yuyang", 1);
             var res = RedisHelper.Get("fullname");
-            //_db.StringSet("fullname", "yuyang");
-            //var name = _db.StringGet("fullname");
             ViewBag.name = res;
             return View();
         }

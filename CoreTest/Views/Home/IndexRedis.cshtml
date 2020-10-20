@@ -13,5 +13,7 @@
 <link href="~/css/all.min.css" rel="stylesheet" />
 <script src="~/lib/layui/layui.js"></script>
 
-
-@ViewBag.name
+<div>
+    <h1>@ViewBag.name</h1>
+    <h2>计数器：@await Component.InvokeAsync("Counter")</h2>
+</div>
