@@ -1,4 +1,4 @@
-﻿using CoreTest.Entity.Model;
+﻿using CoreTest.Data.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

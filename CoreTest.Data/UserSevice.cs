@@ -1,4 +1,4 @@
-﻿using CoreTest.Entity;
+﻿using CoreTest.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -29,11 +29,11 @@ namespace CoreTest.Data
 
         public User GetUser(string account,string password)
         {
-            return _context.User.FirstOrDefault(r => r.loginname == account);
+            return _context.User.FirstOrDefault(r => r.Loginname == account);
         }
         public User GetUserById(string Id)
         {
-            return _context.User.FirstOrDefault(r => r.id ==  new Guid(Id));
+            return _context.User.FirstOrDefault(r => r.Id ==  new Guid(Id));
         }
 
 

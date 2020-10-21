@@ -1,8 +1,8 @@
 ﻿using CoreTest.Data.Extension;
 using CoreTest.Data.Helper;
-using CoreTest.Entity;
-using CoreTest.Entity.Model;
-using CoreTest.Entity.Model.Query;
+using CoreTest.Data.Model;
+using CoreTest.Data.Model.Query;
+using CoreTest.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -47,11 +47,11 @@ namespace CoreTest.Data
 
         public SysUser GetSysUser(string account,string password)
         {
-            return _context.SysUser.FirstOrDefault(r => r.loginName == account);
+            return _context.SysUser.FirstOrDefault(r => r.LoginName == account);
         }
         public SysUser GetSysUserById(string Id)
         {
-            return _context.SysUser.FirstOrDefault(r => r.id ==  new Guid(Id));
+            return _context.SysUser.FirstOrDefault(r => r.Id ==  new Guid(Id));
         }
 
 
@@ -60,11 +60,11 @@ namespace CoreTest.Data
             (string outmess, SysUser user) result;
             string outmess = string.Empty;
             string md5pwd = EncryptHelper.MD5(password);
-            var user = _context.SysUser.FirstOrDefault(item => item.loginName == loginname && item.pwd == md5pwd);
+            var user = _context.SysUser.FirstOrDefault(item => item.LoginName == loginname && item.Pwd == md5pwd);
             if (user != null)
             {
                 //登录判断是否被禁用
-                if (user.stauts == "1")
+                if (user.Stauts == "1")
                 {
                     outmess = "该账号已被禁用";
                 }
@@ -83,7 +83,7 @@ namespace CoreTest.Data
             }
             else
             {
-                var tuser = _context.SysUser.First(r => r.loginName == loginname);
+                var tuser = _context.SysUser.First(r => r.LoginName == loginname);
                 //tuser.LoginCount = tuser.LoginCount.GetValueOrDefault(0) + 1;
                 _context.SaveChanges();
                 result = (outmess, user);

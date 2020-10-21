@@ -18,10 +18,10 @@ using Microsoft.AspNetCore.Server.Kestrel.Core.Features;
 using Microsoft.Extensions.Configuration;
 using X.PagedList;
 using StackExchange.Redis;
-using CoreTest.Entity.Model.Query;
-using CoreTest.Entity.Model.Layui;
-using CoreTest.Entity;
 using CoreTest.Utility;
+using CoreTest.Data.Model.Layui;
+using CoreTest.Data.Model.Query;
+using CoreTest.Entity.Models;
 
 namespace CoreTest.Controllers
 {
@@ -126,8 +126,8 @@ namespace CoreTest.Controllers
             if (string.IsNullOrEmpty(result.ReturnMsg))
             {
                 var user = result.ReturnObject;
-                ClaimsIdentity ident = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.loginName) }, "ApplicationCookie", ClaimTypes.Name, ClaimTypes.Role);
-                ident.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.id.ToString()));
+                ClaimsIdentity ident = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.LoginName) }, "ApplicationCookie", ClaimTypes.Name, ClaimTypes.Role);
+                ident.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
 
 
                 var claimsPrincipal = new ClaimsPrincipal(ident);

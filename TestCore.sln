@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{898FEF5D-3754-42AB-89E7-C1C846940CC6}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\Desktop\docker命令.txt = ..\..\..\Desktop\docker命令.txt
+		..\..\..\Desktop\EF生成命令.txt = ..\..\..\Desktop\EF生成命令.txt
 	EndProjectSection
 EndProject
 Global

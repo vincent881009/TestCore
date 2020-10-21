@@ -1,0 +1,100 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace CoreTest.Entity.Models
+{
+    public partial class TbLotteryReport
+    {
+        public Guid Id { get; set; }
+        public DateTime? ReportDay { get; set; }
+        public decimal? Gg115ztze { get; set; }
+        public decimal? Gg115js { get; set; }
+        public decimal? Gg115yl { get; set; }
+        public int? Gg115dds { get; set; }
+        public decimal? Cqsscztze { get; set; }
+        public decimal? Cqsscjs { get; set; }
+        public decimal? Cqsscyl { get; set; }
+        public int? Cqsscdds { get; set; }
+        public decimal? Jxsscztze { get; set; }
+        public decimal? Jxsscjs { get; set; }
+        public decimal? Jxsscyl { get; set; }
+        public int? Jxsscdds { get; set; }
+        public decimal? Fc3dztze { get; set; }
+        public decimal? Fc3djs { get; set; }
+        public decimal? Fc3dyl { get; set; }
+        public int? Fc3ddds { get; set; }
+        public decimal? Tcplsztze { get; set; }
+        public decimal? Tcplsjs { get; set; }
+        public decimal? Tcplsyl { get; set; }
+        public int? Tcplsdds { get; set; }
+        public decimal? Shsslztze { get; set; }
+        public decimal? Shssljs { get; set; }
+        public decimal? Shsslyl { get; set; }
+        public int? Shssldds { get; set; }
+        public decimal? Bjkl8ztze { get; set; }
+        public decimal? Bjkl8js { get; set; }
+        public decimal? Bjkl8yl { get; set; }
+        public int? Bjkl8dds { get; set; }
+        public decimal? Cqklsfztze { get; set; }
+        public decimal? Cqklsfjs { get; set; }
+        public decimal? Cqklsfyl { get; set; }
+        public int? Cqklsfdds { get; set; }
+        public decimal? Gdklsfztze { get; set; }
+        public decimal? Gdklsfjs { get; set; }
+        public decimal? Gdklsfyl { get; set; }
+        public int? Gdklsfdds { get; set; }
+        public decimal? Bjpk10ztze { get; set; }
+        public decimal? Bjpk10js { get; set; }
+        public decimal? Bjpk10yl { get; set; }
+        public int? Bjpk10dds { get; set; }
+        public decimal? Ztz { get; set; }
+        public decimal? Zjs { get; set; }
+        public decimal? Zts { get; set; }
+        public decimal? Zfs { get; set; }
+        public decimal? Zyl { get; set; }
+        public decimal? Tjsscztze { get; set; }
+        public decimal? Tjsscjs { get; set; }
+        public decimal? Tjsscyl { get; set; }
+        public decimal? Tjsscdds { get; set; }
+        public decimal? Xjsscztze { get; set; }
+        public decimal? Xjsscjs { get; set; }
+        public decimal? Xjsscyl { get; set; }
+        public decimal? Xjsscdds { get; set; }
+        public decimal? Gxklsfztze { get; set; }
+        public decimal? Gxklsfjs { get; set; }
+        public decimal? Gxklsfyl { get; set; }
+        public decimal? Gxklsfdds { get; set; }
+        public decimal? Tjklsfztze { get; set; }
+        public decimal? Tjklsfjs { get; set; }
+        public decimal? Tjklsfyl { get; set; }
+        public decimal? Tjklsfdds { get; set; }
+        public decimal? Jx115ztze { get; set; }
+        public decimal? Jx115js { get; set; }
+        public decimal? Jx115yl { get; set; }
+        public decimal? Jx115dds { get; set; }
+        public decimal? Sd115ztze { get; set; }
+        public decimal? Sd115js { get; set; }
+        public decimal? Sd115yl { get; set; }
+        public decimal? Sd115dds { get; set; }
+        public decimal? Jsk3ztze { get; set; }
+        public decimal? Jsk3js { get; set; }
+        public decimal? Jsk3yl { get; set; }
+        public decimal? Jsk3dds { get; set; }
+        public decimal? Ahk3ztze { get; set; }
+        public decimal? Ahk3js { get; set; }
+        public decimal? Ahk3yl { get; set; }
+        public decimal? Ahk3dds { get; set; }
+        public decimal? Jndbsztze { get; set; }
+        public decimal? Jndbsjs { get; set; }
+        public decimal? Jndbsyl { get; set; }
+        public decimal? Jndbsdds { get; set; }
+        public decimal? Azztze { get; set; }
+        public decimal? Azjs { get; set; }
+        public decimal? Azyl { get; set; }
+        public decimal? Azdds { get; set; }
+        public decimal? Lhcztze { get; set; }
+        public decimal? Lhcjs { get; set; }
+        public decimal? Lhcyl { get; set; }
+        public decimal? Lhcdds { get; set; }
+    }
+}

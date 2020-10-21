@@ -1,6 +1,7 @@
 ﻿using CoreTest.Code.Extensions;
 using CoreTest.Data;
 using CoreTest.Entity;
+using CoreTest.Entity.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.DependencyInjection;
 using System;

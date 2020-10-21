@@ -1,12 +1,12 @@
 ﻿@using X.PagedList.Mvc.Core;
 @using X.PagedList;
-@model X.PagedList.PagedList<CoreTest.Entity.SysUser>;
+@model X.PagedList.PagedList<CoreTest.Entity.Models.SysUser>;
 
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Index";
-    List<CoreTest.Entity.User> listUser = ViewData["userList"] as List<CoreTest.Entity.User>;
+    List<CoreTest.Entity.Models.User> listUser = ViewData["userList"] as List<CoreTest.Entity.Models.User>;
 }
 
 

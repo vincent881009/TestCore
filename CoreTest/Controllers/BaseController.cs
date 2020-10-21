@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CoreTest.Entity.Model;
-using CoreTest.Entity.Model.Layui;
+using CoreTest.Data.Model;
+using CoreTest.Data.Model.Layui;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +14,7 @@ namespace CoreTest.Controllers
     public class BaseController : Controller
     {
 
-        protected string QueryUserId => Code.UserHelper.GetLoginUser().id.ToString();
+        protected string QueryUserId => Code.UserHelper.GetLoginUser().Id.ToString();
 
         protected virtual LayuiResult ProcessLayuiData<T>(Func<PagedListLayUI<T>> action)
         {
