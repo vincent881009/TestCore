@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CoreTest.Data
+namespace CoreTest.Service
 {
     public class UserSevice
     {

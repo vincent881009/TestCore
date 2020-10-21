@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoreTest.Data.Model.Layui
+namespace CoreTest.Service.Model.Layui
 {
     public class LayuiResult
     {

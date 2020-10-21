@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CoreTest.Data.Model
+namespace CoreTest.Service.Model
 {
     public interface IPagedList
     {

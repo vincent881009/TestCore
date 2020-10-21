@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using CoreTest.Data;
+using CoreTest.Service;
 using CoreTest.Code;
 using CoreTest.Code.Extensions;
 using Microsoft.AspNetCore.Authentication;
@@ -19,8 +19,8 @@ using Microsoft.Extensions.Configuration;
 using X.PagedList;
 using StackExchange.Redis;
 using CoreTest.Utility;
-using CoreTest.Data.Model.Layui;
-using CoreTest.Data.Model.Query;
+using CoreTest.Service.Model.Layui;
+using CoreTest.Service.Model.Query;
 using CoreTest.Entity.Models;
 
 namespace CoreTest.Controllers

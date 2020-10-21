@@ -1,4 +1,4 @@
-﻿using CoreTest.Data.Model;
+﻿using CoreTest.Service.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 
-namespace CoreTest.Data.Extension
+namespace CoreTest.Service.Extension
 {
    public static  class Extenstions
     {

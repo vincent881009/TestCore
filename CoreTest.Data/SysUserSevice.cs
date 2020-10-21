@@ -1,7 +1,7 @@
-﻿using CoreTest.Data.Extension;
-using CoreTest.Data.Helper;
-using CoreTest.Data.Model;
-using CoreTest.Data.Model.Query;
+﻿using CoreTest.Service.Extension;
+using CoreTest.Service.Helper;
+using CoreTest.Service.Model;
+using CoreTest.Service.Model.Query;
 using CoreTest.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using X.PagedList;
 
-namespace CoreTest.Data
+namespace CoreTest.Service
 {
     public class SysUserSevice
     {

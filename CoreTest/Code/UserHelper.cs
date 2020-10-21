@@ -1,5 +1,5 @@
 ﻿using CoreTest.Code.Extensions;
-using CoreTest.Data;
+using CoreTest.Service;
 using CoreTest.Entity;
 using CoreTest.Entity.Models;
 using Microsoft.AspNetCore.Authentication;

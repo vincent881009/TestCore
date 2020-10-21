@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CoreTest.Data.Helper
+namespace CoreTest.Service.Helper
 {
     public class EncryptHelper
     {

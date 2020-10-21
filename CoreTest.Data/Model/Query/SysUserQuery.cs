@@ -1,9 +1,9 @@
-﻿using CoreTest.Data.Model.Layui;
+﻿using CoreTest.Service.Model.Layui;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoreTest.Data.Model.Query
+namespace CoreTest.Service.Model.Query
 {
     public class SysUserQuery:LayuiParam
     {

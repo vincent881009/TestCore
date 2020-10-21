@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CoreTest.Data.Model;
-using CoreTest.Data.Model.Layui;
+using CoreTest.Service.Model;
+using CoreTest.Service.Model.Layui;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTest", "CoreTest\CoreTest.csproj", "{00434AED-B05F-427F-9622-550986A4A440}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTest.Data", "CoreTest.Data\CoreTest.Data.csproj", "{A10CD126-E416-41EE-9956-590E5351D552}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTest.Service", "CoreTest.Data\CoreTest.Service.csproj", "{A10CD126-E416-41EE-9956-590E5351D552}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTest.Entity", "CoreTest.Entity\CoreTest.Entity.csproj", "{AB58E6C6-8E06-4CD6-BC61-4E3BBD8EAE66}"
 EndProject

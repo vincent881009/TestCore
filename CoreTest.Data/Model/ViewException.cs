@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CoreTest.Data.Model
+namespace CoreTest.Service.Model
 {
     public class ViewException : Exception
     {
