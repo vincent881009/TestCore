@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTest.Data", "CoreTest.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTest.Entity", "CoreTest.Entity\CoreTest.Entity.csproj", "{AB58E6C6-8E06-4CD6-BC61-4E3BBD8EAE66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreTest.App", "CoreTest.App\CoreTest.App.csproj", "{AE85CA35-7A76-40E4-9071-EB4E640F13E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreTest.App", "CoreTest.App\CoreTest.App.csproj", "{AE85CA35-7A76-40E4-9071-EB4E640F13E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Document", "Document", "{898FEF5D-3754-42AB-89E7-C1C846940CC6}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\docker命令.txt = ..\..\..\Desktop\docker命令.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,0 @@
-CMD进入redis命令：
-
-docker exec -it first-redis redis-cli 
-//first-redis 是自定义的cli的名称
-
-
-

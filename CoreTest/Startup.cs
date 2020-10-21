@@ -23,8 +23,8 @@ namespace CoreTest
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            configuration.GetSection("ConnectionStrings").Bind(AppSettings.ConnectionStrings);
         }
-
         public IConfiguration Configuration { get; }
 
 
@@ -67,7 +67,12 @@ namespace CoreTest
 
 
             //services.AddSingleton(ConnectionMultiplexer.Connect("localhost"));
-            services.AddSingleton(ConnectionMultiplexer.Connect("localhost,allowAdmin=true"));
+            //services.AddSingleton(ConnectionMultiplexer.Connect("localhost,allowAdmin=true"));
+            //services.AddSingleton(ConnectionMultiplexer.Connect("127.0.0.1:6380,password = 123456,DefaultDatabase = 0,allowAdmin=true"));
+
+            services.AddSingleton(ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection")));
+
+
             services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")));
             services.AddScoped<UserSevice>();
             services.AddScoped<SysUserSevice>();
@@ -129,4 +134,17 @@ namespace CoreTest
             //});
         }
     }
+
+
+    public static class AppSettings
+    {
+        public static ConnectionStrings ConnectionStrings { get; set; } = new ConnectionStrings();
+    }
+    public class ConnectionStrings
+    {
+        public string SqlServerConnection { get; set; }
+        public string RedisConnection { get; set; }
+    }
+
+
 }

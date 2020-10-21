@@ -1,18 +1,22 @@
 ﻿using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using static CoreTest.Startup;
 
 namespace CoreTest.Utility
 {
     public static class RedisHelper
     {
-        private static string Constr = "127.0.0.1,password=123456,DefaultDatabase=0,allowAdmin=true";
+        //private static string Constr = "127.0.0.1:6380,password=123456,DefaultDatabase=0,allowAdmin=true";
+
+        private static string Constr = AppSettings.ConnectionStrings.RedisConnection;
 
         private static object _locker = new Object();
         private static ConnectionMultiplexer _instance = null;
