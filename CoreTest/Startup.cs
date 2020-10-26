@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
 using CoreTest.Entity.Models;
+using CoreTest.Utility;
 
 namespace CoreTest
 {
@@ -71,14 +72,23 @@ namespace CoreTest
             //services.AddSingleton(ConnectionMultiplexer.Connect("localhost,allowAdmin=true"));
             //services.AddSingleton(ConnectionMultiplexer.Connect("127.0.0.1:6380,password = 123456,DefaultDatabase = 0,allowAdmin=true"));
 
-            services.AddSingleton(ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection")));
+
+       
+            //services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>();
+            services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection")));
+            services.AddSingleton<IRedisClient, RedisClient>();
+
+            //services.AddSingleton(ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection")));
+
+
+
 
 
             services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")));
             services.AddScoped<UserSevice>();
             services.AddScoped<SysUserSevice>();
 
-         
+
 
         }
 

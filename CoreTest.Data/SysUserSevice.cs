@@ -44,7 +44,10 @@ namespace CoreTest.Service
 
 
 
-
+        public SysUser GetSysUser(string account)
+        {
+            return _context.SysUser.FirstOrDefault(r => r.LoginName == account);
+        }
         public SysUser GetSysUser(string account,string password)
         {
             return _context.SysUser.FirstOrDefault(r => r.LoginName == account);
