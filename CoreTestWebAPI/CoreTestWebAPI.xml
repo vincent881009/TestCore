@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CoreTestWebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:CoreTestWebAPI.Controllers.HomeController.Get(System.Int32,System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            这是一个带参数的get请求
+            </summary>
+            <remarks>
+            例子:
+            Get/1/2/3
+            </remarks>
+            <param name="id">主键</param>
+            <returns>测试字符串</returns> 
+        </member>
+    </members>
+</doc>

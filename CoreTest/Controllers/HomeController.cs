@@ -176,7 +176,7 @@ namespace CoreTest.Controllers
         {
             PagedList<SysUser> model = _sysUserService.GetAll2(pageIndex);
 
-           
+
             return View(model);
         }
       
