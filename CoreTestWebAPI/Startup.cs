@@ -34,7 +34,7 @@ namespace CoreTestWebAPI
             services.AddSwaggerGen(c =>
             {
                 
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Demo", Version = "v1",Description="描述" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API文档名称", Version = "v1",Description="正式环境V1" });
                 //c.OperationFilter<Filters>
           
                 // 设置SWAGER JSON和UI的注释路径。
@@ -52,7 +52,6 @@ namespace CoreTestWebAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -66,8 +65,6 @@ namespace CoreTestWebAPI
                 c.RoutePrefix = string.Empty;
             });
 
-
-
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -78,8 +75,6 @@ namespace CoreTestWebAPI
             {
                 endpoints.MapControllers();
             });
-
-
 
 
         }

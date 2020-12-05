@@ -22,6 +22,13 @@ namespace CoreTest.Entity.Models
 
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<SysUser> SysUser { get; set; }
+        public virtual DbSet<OrderCsp> OrderCsp { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderOriginal> OrderOriginal { get; set; }
+
+
+
+
 
     }
 }

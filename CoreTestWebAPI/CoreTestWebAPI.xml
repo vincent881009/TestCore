@@ -4,16 +4,19 @@
         <name>CoreTestWebAPI</name>
     </assembly>
     <members>
-        <member name="M:CoreTestWebAPI.Controllers.HomeController.Get(System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:CoreTestWebAPI.Controllers.HomeController.Get(System.Int32,System.Int32,System.Nullable{System.Int32},System.String)">
             <summary>
-            这是一个带参数的get请求
+            获取home对象
             </summary>
             <remarks>
             例子:
-            Get/1/2/3
+            Get/1/2/3/yuyang
             </remarks>
-            <param name="id">主键</param>
-            <returns>测试字符串</returns> 
+            <param name="year">年</param>
+            <param name="month">月</param>
+            <param name="day">日</param>
+            <param name="name">姓名</param>
+            <returns>测试结果字符串！！</returns> 
         </member>
     </members>
 </doc>

@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<table class="layui-hide" id="testTable">
+
+</table>
+
+
+
+
+
+
+<script>
+    layui.use(['table', 'util'], function () {
+        var table = layui.table;
+        var util = layui.util;
+
+        // 原样显示xml或者html信息
+        function apiFormat(d) {
+            return util.escape(d.matchName);
+        }
+
+
+        table.render({
+            elem: '#testTable',
+            url: '@Url.Action("GetOrder", "Order")', //数据接口
+            cellMinWidth: 80,
+            page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'],//自定义分页布局
+                //,curr: 5 //设定初始在第 5 页
+                groups: 1, //只显示 1 个连续页码
+                first: false,  //不显示首页
+                last: false //不显示尾页
+
+            }
+            , limit:10
+            , cols: [[
+                    { field: 'code', title: '订单号', sort: true }
+                , { field: 'matchId', title: '比赛ID', sort: true }
+                , { field: 'logionName', title: '用户名' }
+                , { field: 'matchname', title: '订单信息', templet: apiFormat }
+                , { field: 'status', title: '状态', sort: true }
+                , { field: 'submitTime', title: '创建时间', sort: true }
+            ]]
+
+        });
+    });
+
+
+</script>

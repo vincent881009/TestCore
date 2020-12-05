@@ -9,9 +9,9 @@ namespace CoreTest.Service
 {
     public class UserSevice
     {
-        private readonly MyDbContext _context;
+        private readonly GamblingContext _context;
 
-        public UserSevice(MyDbContext context) {
+        public UserSevice(GamblingContext context) {
             _context = context;
         }
 

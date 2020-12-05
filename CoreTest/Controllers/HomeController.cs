@@ -24,29 +24,36 @@ using CoreTest.Service.Model.Query;
 using CoreTest.Entity.Models;
 using System.Threading;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Caching.Memory;
+using CoreTest.Service.Model;
+using CoreTest.Service.Interface;
 
 namespace CoreTest.Controllers
 {
     //[ResponseCache(CacheProfileName = "Default")]
-    public class HomeController :BaseController
+    public class HomeController : BaseController
     {
         private readonly UserSevice _userService;
         private readonly SysUserSevice _sysUserService;
+        private readonly IOrderSevice _orderSevice;
         private readonly IConnectionMultiplexer _redis;
         private readonly IRedisClient _redisClient;
         private readonly IDatabase _db;
         private IServer _server;
+        private IMemoryCache _memoryCache;
 
         //string connectionStr = Configuration.GetSection("AppSetting")["MapKey"];
 
-        public HomeController(UserSevice userService,SysUserSevice sysUserService, IConnectionMultiplexer redis,IRedisClient redisClient)
+        public HomeController(UserSevice userService, SysUserSevice sysUserService, IOrderSevice orderSevice, IConnectionMultiplexer redis, IRedisClient redisClient, IMemoryCache memoryCache)
         {
             _userService = userService;
             _sysUserService = sysUserService;
+            _orderSevice = orderSevice;
             _redis = redis;
             _redisClient = redisClient;
             _db = _redis.GetDatabase();
             _server = redis.GetServer(redis.GetEndPoints()[0]);
+            _memoryCache = memoryCache;
         }
 
         private static IConfiguration configuration;
@@ -72,19 +79,22 @@ namespace CoreTest.Controllers
         }
 
 
+        public IActionResult Error()
+        {
+            return View();
+        }
 
-  
         public IActionResult IndexRedis()
         {
             //_server.FlushAllDatabases();//清空所有数据
-            SysUser yuyang=_sysUserService.GetSysUser("yyu");
+            SysUser yuyang = _sysUserService.GetSysUser("yyu");
             string res = "";
 
 
 
             //string类型插入/读取
             _db.StringSet("fullname", "yuyang");
-          
+
 
 
             //事务
@@ -98,24 +108,24 @@ namespace CoreTest.Controllers
 
 
 
-            ////Zset排序集合
-            //var zset_key = "蜀国Zset";
-            //_db.SortedSetAdd(zset_key, "刘备", 1);
-            //_db.SortedSetAdd(zset_key, "张飞", 3);
-            //_db.SortedSetAdd(zset_key, "关羽", 2);
+            //Zset排序集合
+            var zset_key = "蜀国Zset";
+            _db.SortedSetAdd(zset_key, "刘备", 1);
+            _db.SortedSetAdd(zset_key, "张飞", 3);
+            _db.SortedSetAdd(zset_key, "关羽", 2);
 
-            //var zset_key2 = "吴国Zset";
-            //_db.SortedSetAdd(zset_key2, "孙权", 1);
-            //_db.SortedSetAdd(zset_key2, "陆逊", 3);
-            //_db.SortedSetAdd(zset_key2, "周瑜", 2);
+            var zset_key2 = "吴国Zset";
+            _db.SortedSetAdd(zset_key2, "孙权", 1);
+            _db.SortedSetAdd(zset_key2, "陆逊", 3);
+            _db.SortedSetAdd(zset_key2, "周瑜", 2);
 
 
 
-            ////Hash键值对集合
-            //var hashKey = "于洋";
-            //_db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.LoginName);
-            //_db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Name);
-            //_db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Pwd);
+            //Hash键值对集合
+            var hashKey = "于洋";
+            _db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.LoginName);
+            _db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Name);
+            _db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Pwd);
 
 
             ////set排序集合  最大的不同就是List是可以重复的。而Set是不能重复的
@@ -168,26 +178,43 @@ namespace CoreTest.Controllers
         {
             return View();
         }
+
+        [ResponseCache(Duration =600)]
         public IActionResult IndexLayUI()
         {
+            base.ViewBag.dtNow = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss fff");
             return View();
         }
-        public IActionResult IndexTable( int? pageIndex)
+        public IActionResult IndexTable(int? pageIndex)
         {
             PagedList<SysUser> model = _sysUserService.GetAll2(pageIndex);
 
 
             return View(model);
         }
-      
 
 
-        public LayuiResult GetSysUser(SysUserQuery sysUserQuery)
+
+        
+        public LayuiResult GetSysUser(OrderQuery orderQuery)
         {
             var result = ProcessLayuiData(() =>
-            {
-                return _sysUserService.GetAll(sysUserQuery);
-            });
+           {
+
+               //本地缓存
+               var orderCspCache = _memoryCache.Get<PagedListLayUI<Entity.Models.Order>>("orderCspCache");//获取sysUserCache
+               if (orderCspCache == null)//判断是否存在
+               {
+                   orderCspCache = _orderSevice.GetAll(orderQuery);//调用API获取数据
+
+                   _memoryCache.Set<PagedListLayUI<Entity.Models.Order>>("orderCspCache", orderCspCache, new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(1)));
+                   //存放orderCspCache，传入data数据和设置的数据项
+               }
+               return orderCspCache;
+
+               //return _orderSevice.GetAll(sysUserQuery);
+               //return _sysUserService.GetAll(sysUserQuery);
+           });
             return result;
         }
 
@@ -270,5 +297,5 @@ namespace CoreTest.Controllers
         }
     }
 
-    
+
 }

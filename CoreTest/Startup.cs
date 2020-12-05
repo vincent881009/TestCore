@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using StackExchange.Redis;
 using CoreTest.Entity.Models;
 using CoreTest.Utility;
+using CoreTest.Service.Interface;
 
 namespace CoreTest
 {
@@ -35,8 +36,12 @@ namespace CoreTest
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddMemoryCache(option => {
+                //option.SizeLimit = 1000;//设置内存使用大小
+            });
 
-            services.AddDistributedMemoryCache();
+
+            //services.AddDistributedMemoryCache();
 
             services.AddHttpContextAccessor();
 
@@ -68,26 +73,16 @@ namespace CoreTest
 
 
 
-            //services.AddSingleton(ConnectionMultiplexer.Connect("localhost"));
-            //services.AddSingleton(ConnectionMultiplexer.Connect("localhost,allowAdmin=true"));
-            //services.AddSingleton(ConnectionMultiplexer.Connect("127.0.0.1:6380,password = 123456,DefaultDatabase = 0,allowAdmin=true"));
 
-
-       
-            //services.AddSingleton<IConnectionMultiplexer, ConnectionMultiplexer>();
             services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection")));
             services.AddSingleton<IRedisClient, RedisClient>();
 
-            //services.AddSingleton(ConnectionMultiplexer.Connect(Configuration.GetConnectionString("RedisConnection")));
 
 
-
-
-
-            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")));
+            services.AddDbContext<GamblingContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")));
             services.AddScoped<UserSevice>();
             services.AddScoped<SysUserSevice>();
-
+            services.AddScoped<IOrderSevice,OrderSevice>();
 
 
         }
@@ -104,6 +99,13 @@ namespace CoreTest
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+
+            //输入错误的URL路径, 将请求到   Error500()方法
+            app.UseExceptionHandler("/Error/500");
+            //输入错误的URL路径, 将请求到   Error404()方法
+            app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
 
             app.UseResponseCaching();
 
@@ -129,12 +131,18 @@ namespace CoreTest
                 endpoints.MapDefaultControllerRoute();
             });
 
+
+
+
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute(
             //        name: "default",
             //        pattern: "{controller=Home}/{action=Index}/{id?}");
             //});
+
+
+
 
             //app.UseEndpoints(endpoints =>
             //{

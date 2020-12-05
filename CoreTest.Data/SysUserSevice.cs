@@ -16,13 +16,13 @@ namespace CoreTest.Service
 {
     public class SysUserSevice
     {
-        private readonly MyDbContext _context;
+        private readonly GamblingContext _context;
 
-        public SysUserSevice(MyDbContext context) {
+        public SysUserSevice(GamblingContext context) {
             _context = context;
         }
 
-
+       
         public IList<SysUser> GetSysUserList()
         {
             return _context.SysUser.AsNoTracking().ToList();

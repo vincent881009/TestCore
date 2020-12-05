@@ -9,7 +9,7 @@
 <link href="~/css/all.min.css" rel="stylesheet" />
 <script src="~/lib/layui/layui.js"></script>
 
-
+<div>@ViewBag.dtNow</div>
 
 <table class="layui-hide" id="testTable"></table>
 
@@ -29,11 +29,13 @@
                 groups: 1, //只显示 1 个连续页码
                 first: false,  //不显示首页
                 last: false //不显示尾页
+                
             }
+            , limit:5000
             , cols: [[
                  { field: 'id',title: 'ID', sort: true }
-                , { field: 'name', title: '用户名' }
-                , { field: 'pwd', title: '密码', sort: true }
+                , { field: 'matchInfo', title: '用户名' }
+                , { field: 'type', title: '密码', sort: true }
             ]]
 
         });
