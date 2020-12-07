@@ -25,6 +25,17 @@
             return util.escape(d.matchName);
         }
 
+        function addLink(d) {
+            var addLink = d.code;
+            if ('' == addLink || null == addLink || undefined == addLink) {
+                return '';
+            }
+            if (addLink.length > 0) {
+                return '<a class="layui-table-link" href="/order/Details/' + d.code+'" lay-event="link">' + d.code + '</a>';
+            }
+        }   
+
+
 
         table.render({
             elem: '#testTable',
@@ -40,7 +51,7 @@
             }
             , limit:10
             , cols: [[
-                    { field: 'code', title: '订单号', sort: true }
+                { field: 'code', title: '订单号', sort: true, templet: addLink  }
                 , { field: 'matchId', title: '比赛ID', sort: true }
                 , { field: 'logionName', title: '用户名' }
                 , { field: 'matchname', title: '订单信息', templet: apiFormat }

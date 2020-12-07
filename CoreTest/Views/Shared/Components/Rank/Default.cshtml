@@ -1,0 +1,8 @@
+﻿@using StackExchange.Redis;
+@model SortedSetEntry[]
+
+
+@foreach (var item in Model)
+{
+    <div>@item</div>
+}

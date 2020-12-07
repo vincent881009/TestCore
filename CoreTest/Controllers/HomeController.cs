@@ -93,39 +93,40 @@ namespace CoreTest.Controllers
 
 
             //string类型插入/读取
-            _db.StringSet("fullname", "yuyang");
+            //_db.StringSet("fullname", "yuyang");
+
+            ////事务
+            //var trans = _db.CreateTransaction();
+            //trans.AddCondition(Condition.StringEqual("fullname", "yuyang"));//相当于Redis命令中的watch name 如果ID和原先不一致 就不更新下一步StringSetAsync
+            //trans.StringSetAsync("fullname", "EE");
+            //bool result = trans.Execute();
 
 
-
-            //事务
-            var trans = _db.CreateTransaction();
-            trans.AddCondition(Condition.StringEqual("fullname", "yuyang"));//相当于Redis命令中的watch name 如果ID和原先不一致 就不更新下一步StringSetAsync
-            trans.StringSetAsync("fullname", "EE");
-            bool result = trans.Execute();
-
-
-            res = _db.StringGet("fullname");
+            //res = _db.StringGet("fullname");
 
 
 
             //Zset排序集合
-            var zset_key = "蜀国Zset";
-            _db.SortedSetAdd(zset_key, "刘备", 1);
-            _db.SortedSetAdd(zset_key, "张飞", 3);
-            _db.SortedSetAdd(zset_key, "关羽", 2);
+            //var zset_key = "蜀国Zset";
+            //_db.SortedSetAdd(zset_key, "刘备", 1);
+            //_db.SortedSetAdd(zset_key, "张飞", 3);
+            //_db.SortedSetAdd(zset_key, "关羽", 2);
 
-            var zset_key2 = "吴国Zset";
-            _db.SortedSetAdd(zset_key2, "孙权", 1);
-            _db.SortedSetAdd(zset_key2, "陆逊", 3);
-            _db.SortedSetAdd(zset_key2, "周瑜", 2);
+            //var zset_key2 = "吴国Zset";
+            //_db.SortedSetAdd(zset_key2, "孙权", 1);
+            //_db.SortedSetAdd(zset_key2, "陆逊", 3);
+            //_db.SortedSetAdd(zset_key2, "周瑜", 2);
+
 
 
 
             //Hash键值对集合
-            var hashKey = "于洋";
-            _db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.LoginName);
-            _db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Name);
-            _db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Pwd);
+            //var hashKey = "于洋";
+            //_db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.LoginName);
+            //_db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Name);
+            //_db.HashSet(hashKey, Guid.NewGuid().ToString(), yuyang.Pwd);
+
+
 
 
             ////set排序集合  最大的不同就是List是可以重复的。而Set是不能重复的
@@ -164,9 +165,9 @@ namespace CoreTest.Controllers
             //res2 = _db.ListLeftPop(RightListKey);
 
             ///分布式锁
-            var LockTakeKey = "LockTake";
-            //_redisClient.Lock()
-            _db.LockTake(LockTakeKey, "lock yy", TimeSpan.FromSeconds(30));
+            //var LockTakeKey = "LockTake";
+            ////_redisClient.Lock()
+            //_db.LockTake(LockTakeKey, "lock yy", TimeSpan.FromSeconds(30));
 
 
             ViewBag.name = res;

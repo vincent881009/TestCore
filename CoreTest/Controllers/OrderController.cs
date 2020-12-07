@@ -1,13 +1,10 @@
-﻿using CoreTest.Service;
-using CoreTest.Service.Interface;
+﻿using CoreTest.Service.Interface;
 using CoreTest.Service.Model.Layui;
 using CoreTest.Service.Model.Query;
+using CoreTest.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using StackExchange.Redis;
 
 namespace CoreTest.Controllers
 {
@@ -15,10 +12,18 @@ namespace CoreTest.Controllers
     {
 
         private readonly IOrderSevice _orderSevice;
+        private readonly IConnectionMultiplexer _redis;
+        private readonly IRedisClient _redisClient;
+        private readonly IDatabase _db;
+        private readonly IServer _server;
 
-        public OrderController(IOrderSevice orderSevice)
+        public OrderController(IOrderSevice orderSevice, IConnectionMultiplexer redis, IRedisClient redisClient)
         {
             _orderSevice = orderSevice;
+            _redis = redis;
+            _redisClient = redisClient;
+            _db = _redis.GetDatabase();
+            _server = redis.GetServer(redis.GetEndPoints()[0]);
         }
 
 
@@ -31,9 +36,10 @@ namespace CoreTest.Controllers
         }
 
         // GET: OrderController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details([FromRoute] string code)
         {
-            return View();
+            var data = _orderSevice.GetOne(code);
+            return View(data);
         }
         public LayuiResult GetOrder(OrderQuery orderQuery)
         {
@@ -43,6 +49,9 @@ namespace CoreTest.Controllers
             });
             return result;
         }
+
+
+
 
         // GET: OrderController/Create
         public ActionResult Create()

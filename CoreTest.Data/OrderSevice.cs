@@ -18,9 +18,13 @@ namespace CoreTest.Service
     public class OrderSevice: IOrderSevice
     {
         private readonly GamblingContext _context;
-        public OrderSevice(GamblingContext context)
+        private readonly MatchMasterContext _matchMasterContext;
+
+
+        public OrderSevice(GamblingContext context,MatchMasterContext matchMasterContext)
         {
             _context = context;
+            _matchMasterContext = matchMasterContext;
         }
 
         //public IList<OrderCsp> OrderList => _context.OrderCsp.AsNoTracking().ToList();
@@ -37,6 +41,11 @@ namespace CoreTest.Service
             return query.ToPagedListLayUI(orderQuery.page - 1, orderQuery.limit);
         }
 
+        public MatchMasterBm GetOne(string code)
+        {
+            var val = _matchMasterContext.MatchMasterBm.AsNoTracking().Where(i => i.Code == code).FirstOrDefault();
+            return val;
+        }
 
     }
 }

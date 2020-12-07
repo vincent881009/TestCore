@@ -16,7 +16,8 @@ namespace CoreTest.Service.Interface
 {
     public interface IOrderSevice
     {
-         IList<Order> GetOrderList();
-         PagedListLayUI<Order> GetAll(OrderQuery orderQuery);
+        IList<Order> GetOrderList();
+        PagedListLayUI<Order> GetAll(OrderQuery orderQuery);
+        MatchMasterBm GetOne(string code);
     }
 }

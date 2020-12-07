@@ -80,9 +80,15 @@ namespace CoreTest
 
 
             services.AddDbContext<GamblingContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection")));
+            services.AddDbContext<MatchMasterContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServerConnection2")));
             services.AddScoped<UserSevice>();
             services.AddScoped<SysUserSevice>();
             services.AddScoped<IOrderSevice,OrderSevice>();
+
+
+
+
+
 
 
         }
@@ -101,8 +107,8 @@ namespace CoreTest
             }
 
 
-            //输入错误的URL路径, 将请求到   Error500()方法
-            app.UseExceptionHandler("/Error/500");
+            ////输入错误的URL路径, 将请求到   Error500()方法
+            //app.UseExceptionHandler("/Error/500");
             //输入错误的URL路径, 将请求到   Error404()方法
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
@@ -126,22 +132,28 @@ namespace CoreTest
 
 
             //路由
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapDefaultControllerRoute();
+            //});
+
+
+
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    //pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{code?}");
             });
-
-
-
 
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //        name: "default", 
+            //        pattern: "{controller=Home}/{action=Index}/{id}/{code}");
             //});
-
-
 
 
             //app.UseEndpoints(endpoints =>
