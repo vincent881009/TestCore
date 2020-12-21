@@ -1,0 +1,19 @@
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@model X.PagedList.PagedList<CoreTest.Entity.Models.SysUser>;
+
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+    List<CoreTest.Entity.Models.User> listUser = ViewData["userList"] as List<CoreTest.Entity.Models.User>;
+}
+
+
+<link href="~/css/all.min.css" rel="stylesheet" />
+<script src="~/lib/layui/layui.js"></script>
+
+<div>
+    <h1>@ViewBag.name</h1>
+
+</div>

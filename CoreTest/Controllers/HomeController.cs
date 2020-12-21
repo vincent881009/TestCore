@@ -194,9 +194,12 @@ namespace CoreTest.Controllers
             return View(model);
         }
 
+        public IActionResult IndexMQ()
+        {
+            return View();
+        }
 
 
-        
         public LayuiResult GetSysUser(OrderQuery orderQuery)
         {
             var result = ProcessLayuiData(() =>
